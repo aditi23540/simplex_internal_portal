@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QA Report Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form { max-width: 500px; margin: auto; }
+    input, textarea, select { width: 100%; padding: 10px; margin-bottom: 10px; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+
+  <h2>QA Report Form</h2>
+  <form action="submit.php" method="post">
+    <label for="title">Issue Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="severity">Severity:</label>
+    <select id="severity" name="severity" required>
+      <option value="">Select severity</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+      <option value="Critical">Critical</option>
+    </select>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="5" required></textarea>
+
+    <label for="steps">Steps to Reproduce:</label>
+    <textarea id="steps" name="steps" rows="5" required></textarea>
+
+    <button type="submit">Submit Report</button>
+  </form>
+
+</body>
+</html>
