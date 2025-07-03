@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Details Form</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f7f8; margin: 0; padding: 0; }
+    .container { max-width: 500px; margin: 50px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #2a9d8f; }
+    label { display: block; margin-bottom: 8px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; }
+    button { width: 100%; padding: 12px; background-color: #2a9d8f; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    button:hover { background-color: #21867a; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Details Form</h1>
+    <form action="emp_detail.php" method="POST">
+      <label for="empId">Employee ID</label>
+      <input type="text" id="empId" name="empId" required>
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="designation">Designation</label>
+      <input type="text" id="designation" name="designation" required>
+
+      <label for="department">Department</label>
+      <select id="department" name="department" required>
+        <option value="" disabled selected>Select department</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Design">Design</option>
+        <option value="QA">QA</option>
+        <option value="HR">HR</option>
+        <option value="Finance">Finance</option>
+      </select>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="" disabled selected>Select gender</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="doj">Date of Joining</label>
+      <input type="date" id="doj" name="doj" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <button type="submit">Submit Details</button>
+    </form>
+  </div>
+</body>
+</html>
