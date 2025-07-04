@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Salary Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    input:focus, select:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #resultTable {
+      margin-top: 30px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #resultTable th, #resultTable td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    #resultTable th {
+      background-color: #007BFF;
+      color: white;
+    }
+    #resultTable tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    #resultContainer {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Employee Salary Details</h2>
+    <form id="salaryForm">
+      <label for="empId">Employee ID</label>
+      <input type="text" id="empId" name="empId" placeholder="Enter employee ID" required />
+
+      <label for="empName">Employee Name</label>
+      <input type="text" id="empName" name="empName" placeholder="Enter employee name" required />
+
+      <label for="designation">Designation</label>
+      <input type="text" id="designation" name="designation" placeholder="Enter designation" required />
+
+      <label for="basicSalary">Basic Salary ($)</label>
+      <input type="number" id="basicSalary" name="basicSalary" placeholder="Enter basic salary" required />
+
+      <label for="allowance">Allowance ($)</label>
+      <input type="number" id="allowance" name="allowance" placeholder="Enter allowance" />
+
+      <label for="deductions">Deductions ($)</label>
+      <input type="number" id="deductions" name="deductions" placeholder="Enter deductions" />
+
+      <label for="paymentMode">Payment Mode</label>
+      <select id="paymentMode" name="paymentMode" required>
+        <option value="">Select payment mode</option>
+        <option value="bank">Bank Transfer</option>
+        <option value="cash">Cash</option>
+        <option value="cheque">Cheque</option>
+      </select>
+
+      <button type="submit">Submit Salary Details</button>
+    </form>
+
+    <div id="resultContainer"></div>
+  </div>
+
+  <script>
+    document.getElementById('salaryForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent page reload
+
+      // Collect form data
+      const empId = document.getElementById('empId').value.trim();
+      const empName = document.getElementById('empName').value.trim();
+      const designation = document.getElementById('designation').value.trim();
+      const basicSalary = document.getElementById('basicSalary').value.trim();
+      const allowance = document.getElementById('allowance').value.trim() || '0';
+      const deductions = document.getElementById('deductions').value.trim() || '0';
+      const paymentMode = document.getElementById('paymentMode').value;
+
+      // Prepare table rows
+      const rows = `
+        <tr><th>Employee ID</th><td>${empId}</td></tr>
+        <tr><th>Employee Name</th><td>${empName}</td></tr>
+        <tr><th>Designation</th><td>${designation}</td></tr>
+        <tr><th>Basic Salary ($)</th><td>${basicSalary}</td></tr>
+        <tr><th>Allowance ($)</th><td>${allowance}</td></tr>
+        <tr><th>Deductions ($)</th><td>${deductions}</td></tr>
+        <tr><th>Payment Mode</th><td>${paymentMode.charAt(0).toUpperCase() + paymentMode.slice(1)}</td></tr>
+      `;
+
+      // Display the table
+      document.getElementById('resultContainer').innerHTML = `
+        <table id="resultTable">
+          ${rows}
+        </table>
+      `;
+
+      // Optionally clear form after submission
+      // document.getElementById('salaryForm').reset();
+    });
+  </script>
+</body>
+</html>
