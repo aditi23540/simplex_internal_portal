@@ -1,0 +1,393 @@
+/* File: css/style.css */
+body { 
+    font-family: Arial, sans-serif; 
+    line-height: 1.6; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #f4f4f4; 
+    color: #333; 
+}
+.container { 
+    width: 90%; 
+    max-width: 1200px; 
+    margin: auto; 
+    overflow: hidden; 
+    padding: 0 20px; 
+}
+header { 
+    background: #333; 
+    color: #fff; 
+    padding: 1rem 0; 
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+header h1 { 
+    margin: 0; 
+}
+section { 
+    background: #fff; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+h2, h3, h4, h5 { 
+    color: #333; 
+}
+h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+button { 
+    background: #007bff; 
+    color: white; 
+    border: 0; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-right: 5px; 
+    margin-bottom: 10px; 
+    transition: background-color 0.2s ease;
+}
+button:hover { 
+    background: #0056b3; 
+}
+button#cancelProjectFormBtnDashboard, 
+button#cancelTaskFormBtn { 
+    background: #6c757d; 
+}
+button#cancelProjectFormBtnDashboard:hover, 
+button#cancelTaskFormBtn:hover { 
+    background: #5a6268; 
+}
+button#showCreateProjectFormBtnDashboard {
+    background-color: #28a745; 
+}
+button#showCreateProjectFormBtnDashboard:hover {
+    background-color: #218838;
+}
+
+#backToDashboardBtn {
+    background-color: #6c757d; 
+    margin-right: auto; 
+}
+#backToDashboardBtn:hover {
+    background-color: #5a6268;
+}
+
+.form-container { 
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    margin-top: 15px; 
+    margin-bottom: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 5px;
+}
+.form-container div { 
+    margin-bottom: 12px; 
+}
+.form-container label { 
+    display: block; 
+    margin-bottom: 6px; 
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.form-container input[type="text"], 
+.form-container input[type="date"], 
+.form-container textarea, 
+.form-container select { 
+    width: calc(100% - 22px); 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+.form-container textarea { 
+    height: 80px; 
+    resize: vertical; 
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+}
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Analytics Overview */
+#analyticsOverview h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.3em;
+}
+.analytics-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.analytics-card {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex-basis: 200px;
+    flex-grow: 1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.analytics-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: white;
+    font-weight: normal;
+}
+.analytics-card p {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Project Tiles Container */
+#projectTilesContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px;
+    margin-top: 20px;
+}
+.project-tile {
+    background-color: #fff;
+    border: 1px solid #e0e0e0; 
+    /* border-left: 5px solid #007bff; Default border, will be overridden by status */
+    padding: 15px 20px 20px 20px; /* Adjusted padding for badge */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative; /* For status badge positioning */
+}
+.project-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Project Status Badge on Tile */
+.project-status-badge {
+    position: absolute;
+    top: -1px; /* Adjust to align with top border */
+    right: -1px; /* Adjust to align with right border */
+    background-color: #6c757d; /* Default grey */
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    border-top-right-radius: 8px; /* Match tile's radius */
+    border-bottom-left-radius: 8px; /* Nice curve */
+    line-height: 1.2;
+}
+.project-tile.tile-complete { border-left: 5px solid #28a745; }
+.project-tile.tile-complete .project-status-badge { background-color: #28a745; }
+
+.project-tile.tile-in-progress { border-left: 5px solid #ffc107; }
+.project-tile.tile-in-progress .project-status-badge { background-color: #ffc107; color: #212529;} /* Darker text for yellow */
+
+.project-tile.tile-not-started { border-left: 5px solid #17a2b8; }
+.project-tile.tile-not-started .project-status-badge { background-color: #17a2b8; }
+
+.project-tile.tile-no-tasks { border-left: 5px solid #6c757d; }
+.project-tile.tile-no-tasks .project-status-badge { background-color: #6c757d; }
+
+.project-tile.tile-active { border-left: 5px solid #007bff; }
+.project-tile.tile-active .project-status-badge { background-color: #007bff; } /* For default 'Active' */
+
+
+.project-tile h4 {
+    margin-top: 20px; /* Space for badge if present */
+    margin-bottom: 10px;
+    color: #0056b3;
+    font-size: 1.2em;
+}
+.project-tile p.description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 4.2em;
+    flex-grow: 1;
+}
+.project-tile .details-row { 
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column; 
+    gap: 4px;
+}
+.project-tile .dates, .project-tile .owner {
+    margin-top: 0; 
+}
+.project-tile .actions { 
+    margin-top: 15px;
+    text-align: right;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+.project-tile .actions button {
+    padding: 6px 12px;
+    font-size: 0.85em; 
+    margin-left: 5px; 
+}
+.project-tile .actions .edit-project-tile-btn { background-color: #17a2b8; }
+.project-tile .actions .edit-project-tile-btn:hover { background-color: #138496; }
+.project-tile .actions .delete-project-tile-btn { background-color: #dc3545; }
+.project-tile .actions .delete-project-tile-btn:hover { background-color: #c82333; }
+
+.task-item { 
+    background: #f8f9fa;
+    padding: 10px 15px; 
+    margin-bottom: 10px; 
+    border-radius: 4px; 
+    border-left: 5px solid #17a2b8; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.task-item h5 { 
+    margin-top: 0; margin-bottom: 5px; 
+}
+.task-item p { 
+    margin-bottom: 5px; font-size: 0.9em; 
+}
+.task-item .actions button { 
+    padding: 5px 10px; font-size: 0.9em; margin-right: 5px; 
+}
+
+.tasks-section-header {
+    display: flex;
+    /* justify-content: space-between; -- Replaced by margin auto on button */
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    gap: 10px; 
+}
+.tasks-section-header h2 { 
+    margin: 0 auto; /* Center project name if back button takes space */
+    font-size: 1.8em;
+    /* flex-grow: 1; */ /* Removed to allow centering with margin auto */
+    text-align: center; 
+}
+#showCreateTaskFormBtnTopRight { 
+    background-color: #28a745; 
+    margin-left: auto; /* Pushes to the right, after centered h2 */
+}
+#showCreateTaskFormBtnTopRight:hover {
+    background-color: #218838;
+}
+
+.view-toggle {
+    margin-bottom: 15px; 
+    text-align: center; 
+}
+.view-toggle button { 
+    background: #6c757d; margin-right: 10px; 
+}
+.view-toggle button:last-child {
+    margin-right: 0;
+}
+.view-toggle button.active-view { 
+    background: #007bff; font-weight: bold; 
+}
+.task-view .view-title { 
+    margin-top:0; border-bottom: 1px solid #eee; padding-bottom:10px; margin-bottom: 15px; font-size: 1.4em;
+}
+
+/* Kanban Board Styles */
+.kanban-board { display: flex; justify-content: space-between; gap: 15px; margin-top: 20px; overflow-x: auto; padding-bottom: 10px; }
+.kanban-column { flex: 1; min-width: 260px; max-width: 320px; background: #f0f2f5; padding: 10px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
+.kanban-column h5 { text-align: center; margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #d1d9e0; color: #334d6e; font-weight: bold; font-size: 1.1em; }
+.kanban-tasks { min-height: 150px; background-color: #e4e9f0; padding: 8px; border-radius: 4px; }
+.kanban-task { background: #fff; padding: 10px 12px; margin-bottom: 10px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: grab; border-left: 4px solid #007bff; }
+.kanban-task.priority-High { border-left-color: #dc3545; }
+.kanban-task.priority-Medium { border-left-color: #ffc107; }
+.kanban-task.priority-Low { border-left-color: #28a745; }
+.kanban-task p { font-size: 0.85em; margin: 4px 0; color: #506683;}
+.kanban-task strong { display: block; margin-bottom: 5px; font-size: 0.95em; color: #334d6e;}
+.kanban-task.dragging { opacity: 0.6; background: #d6eaff; transform: rotate(2deg); }
+.kanban-column.drag-over { border: 2px dashed #007bff; background-color: #e9f2ff; }
+.kanban-task .dependency-info { font-size: 0.75em; color: #666; margin-top: 5px; }
+.kanban-task .task-meta-kanban /*New class for meta text on kanban for better spacing */ { 
+    font-size: 0.8em; 
+    color: #607085;
+}
+.kanban-task .task-meta-kanban + .task-meta-kanban { /* If two meta lines exist */
+    margin-top: 2px;
+}
+
+
+/* Gantt Chart Styles */
+#ganttChartContainer { position: relative; width: 100%; overflow: auto; padding: 10px 0; border: 1px solid #dcdcdc; background-color: #ffffff; margin-top: 20px; min-height: 300px; }
+.gantt .grid-background { fill: #fdfdfd; } 
+.gantt .grid-header { fill: #f7f7f7; } 
+.gantt .grid-row { fill: #fff; } 
+.gantt .grid-row:nth-child(even) { fill: #fbfbfb; } 
+.gantt .grid-lines .line, .gantt .grid-lines .row-line { stroke: #e8e8e8; } 
+.gantt .tick { stroke: #d0d0d0; stroke-width: 1; }
+.gantt .lower-text, .gantt .upper-text { font-size: 11px; fill: #444; font-family: Arial, sans-serif; }
+.gantt .upper-text { font-weight: bold; }
+.gantt .bar-wrapper.gantt-task-color-0 .bar { fill: #a6cee3; } 
+.gantt .bar-wrapper.gantt-task-color-1 .bar { fill: #1f78b4; } 
+.gantt .bar-wrapper.gantt-task-color-2 .bar { fill: #b2df8a; } 
+.gantt .bar-wrapper.gantt-task-color-3 .bar { fill: #33a02c; } 
+.gantt .bar-wrapper.gantt-task-color-4 .bar { fill: #fb9a99; } 
+.gantt .bar-wrapper.status-to-do .bar { fill: #f6ad55; } 
+.gantt .bar-wrapper.status-in-progress .bar { fill: #4299e1; } 
+.gantt .bar-wrapper.status-done .bar { fill: #48bb78; } 
+.gantt .bar-wrapper.status-blocked .bar { fill: #f56565; } 
+.gantt .bar-wrapper .bar-progress { fill: rgba(0, 0, 0, 0.25); }
+.gantt .bar-wrapper.status-done .bar-progress { fill: rgba(255, 255, 255, 0.3); } 
+.gantt .bar-label { fill: #fff; font-weight: 500; font-size: 10px; dominant-baseline: central; text-anchor: middle; pointer-events: none; }
+.gantt .bar-wrapper.gantt-task-color-0 .bar-label,
+.gantt .bar-wrapper.gantt-task-color-2 .bar-label,
+.gantt .bar-wrapper.status-to-do .bar-label { fill: #2d3748; }
+.gantt .bar-wrapper.status-in-progress .bar-label { fill: #fff; }
+.gantt .bar-wrapper.status-done .bar-label { fill: #fff; }
+.gantt .bar-wrapper.status-blocked .bar-label { fill: #fff; }
+.gantt .arrow { fill: #667eea; stroke: #667eea; stroke-width: 1.5; }
+.gantt-popup { background-color: white; border: 1px solid #ccc; box-shadow: 0 3px 7px rgba(0,0,0,0.2); padding: 10px 15px; border-radius: 4px; font-size: 0.9em; min-width: 200px; }
+.gantt-popup h5 { margin-top: 0; margin-bottom: 8px; color: #0056b3; }
+.gantt-popup p { margin: 4px 0; }
+
+/* Notifications */
+.notifications { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+.notification { background-color: #333; color: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); opacity: 0; transform: translateY(-20px); transition: opacity 0.3s ease, transform 0.3s ease; }
+.notification.show { opacity: 1; transform: translateY(0); }
+.notification.success { background-color: #5cb85c; }
+.notification.error { background-color: #d9534f; }
+.notification.info { background-color: #5bc0de; }
+
+footer { 
+    text-align: center; 
+    margin-top: 30px; 
+    padding: 20px; 
+    background: #333; 
+    color: #fff; 
+}

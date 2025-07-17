@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Project Management Tool</h1>
+        </header>
+
+        <div class="notifications" id="notifications"></div>
+
+        <main>
+            <section id="dashboard-section">
+                <div class="dashboard-header">
+                    <h1>Project Manager Dashboard</h1>
+                    <button id="showCreateProjectFormBtnDashboard">Create New Project</button>
+                </div>
+                <div id="analyticsOverview">
+                    <h3>Analytics Overview</h3>
+                    <div class="analytics-cards">
+                        <div class="analytics-card">
+                            <h4>Total Projects</h4>
+                            <p id="totalProjectsCount">-</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="projectFormContainerDashboard" class="form-container" style="display:none;">
+                    <h3>Project Details</h3>
+                    <form id="projectForm">
+                        <input type="hidden" id="projectId" name="projectId">
+                        <div><label for="projectName">Project Name:</label><input type="text" id="projectName" name="project_name" required></div>
+                        <div><label for="projectDescription">Description:</label><textarea id="projectDescription" name="project_description"></textarea></div>
+                        <div><label for="projectStartDate">Start Date:</label><input type="date" id="projectStartDate" name="start_date"></div>
+                        <div><label for="projectEndDate">End Date:</label><input type="date" id="projectEndDate" name="end_date"></div>
+                        <div><label for="projectOwner">Owner:</label><select id="projectOwner" name="project_owner_id"></select></div>
+                        <button type="submit" id="saveProjectBtn">Save Project</button>
+                        <button type="button" id="cancelProjectFormBtnDashboard">Cancel</button>
+                    </form>
+                </div>
+                <h2>Your Projects</h2>
+                <div id="projectTilesContainer">
+                    </div>
+            </section>
+
+            <section id="tasks-section" style="display:none;">
+                <div class="tasks-section-header">
+                    <button id="backToDashboardBtn">⬅️ Back to Dashboard</button> 
+                    <h2 id="selectedProjectName">(Selected Project Name)</h2>
+                    <button id="showCreateTaskFormBtnTopRight">Create Task</button>
+                </div>
+                <div class="view-toggle">
+                    <button id="showTaskListViewBtn">Task List</button>
+                    <button id="showKanbanViewBtn" class="active-view">Kanban Board</button> 
+                    <button id="showGanttViewBtn">Gantt Chart</button>
+                </div>
+                <div id="taskFormContainer" class="form-container" style="display:none;">
+                    <h3>Task Details</h3>
+                    <form id="taskForm">
+                        <input type="hidden" id="taskId" name="task_id">
+                        <input type="hidden" id="taskProjectId" name="project_id">
+                        <div><label for="taskName">Task Name:</label><input type="text" id="taskName" name="task_name" required></div>
+                        <div><label for="taskDescription">Description:</label><textarea id="taskDescription" name="task_description"></textarea></div>
+                        
+                        <div><label for="taskStartDate">Start Date:</label><input type="date" id="taskStartDate" name="start_date"></div>
+                        
+                        <div><label for="taskStatus">Status:</label><select id="taskStatus" name="status"><option value="To Do">To Do</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="Blocked">Blocked</option></select></div>
+                        <div><label for="taskPriority">Priority:</label><select id="taskPriority" name="priority"><option value="Low">Low</option><option value="Medium">Medium</option><option value="High">High</option></select></div>
+                        <div><label for="taskAssignee">Assignee:</label><select id="taskAssignee" name="assignee_id"></select></div>
+                        <div><label for="taskDueDate">Due Date:</label><input type="date" id="taskDueDate" name="due_date"></div>
+                        <div>
+                            <label for="taskDependency">Depends on Task (within this project):</label>
+                            <select id="taskDependency" name="dependent_on_task_id">
+                                <option value="">-- None --</option>
+                                </select>
+                        </div>
+                        <button type="submit" id="saveTaskBtn">Save Task</button>
+                        <button type="button" id="cancelTaskFormBtn">Cancel</button>
+                    </form>
+                </div>
+                <div id="taskListView" class="task-view" style="display:none;"><h4 class="view-title">Task List</h4><div id="tasksList"></div></div>
+                <div id="kanbanView" class="task-view"> 
+                    <h4 class="view-title">Kanban Board</h4>
+                    <div class="kanban-board">
+                        <div class="kanban-column" id="kanban-todo" data-status="To Do"><h5>To Do</h5><div class="kanban-tasks"></div></div>
+                        <div class="kanban-column" id="kanban-in-progress" data-status="In Progress"><h5>In Progress</h5><div class="kanban-tasks"></div></div>
+                        <div class="kanban-column" id="kanban-done" data-status="Done"><h5>Done</h5><div class="kanban-tasks"></div></div>
+                        <div class="kanban-column" id="kanban-blocked" data-status="Blocked"><h5>Blocked</h5><div class="kanban-tasks"></div></div>
+                    </div>
+                </div>
+                <div id="ganttView" class="task-view" style="display:none;"><h4 class="view-title">Gantt Chart</h4><div id="ganttChartContainer"></div></div>
+            </section>
+        </main>
+        <footer><p>&copy; 2024-2025 Project Management Tool</p></footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
